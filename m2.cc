@@ -16,6 +16,16 @@ void inference_only(int batch_size) {
   std::cout<<std::endl;
   std::cout<<"Test Accuracy: "<<acc<< std::endl;
   std::cout<<std::endl;
+
+  std::cout<<"Loading model...";
+  Network dnn_2 = createNetwork_CPU();
+  std::cout<<"Done"<<std::endl;
+
+  dnn_2.forward(dataset.test_data);
+  float acc_2 = compute_accuracy(dnn_2.output(), dataset.test_labels);
+  std::cout<<std::endl;
+  std::cout<<"Test Accuracy: "<<acc_2<< std::endl;
+  std::cout<<std::endl;
 }
 
 int main(int argc, char* argv[]) {
